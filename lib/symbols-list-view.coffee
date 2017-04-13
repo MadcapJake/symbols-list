@@ -1,6 +1,10 @@
 {View} = require 'atom-space-pen-views'
 {SelectListView} = require 'atom-space-pen-views'
 
+
+
+
+
 module.exports =
     class SymbolsListView extends SelectListView
         @content: ->
@@ -12,6 +16,17 @@ module.exports =
         callOnConfirm: null
         cancelling: true
 
+        escapeHtml: (string) ->
+          entityMap =
+            '&': '&amp;'
+            '<': '&lt;'
+            '>': '&gt;'
+            '"': '&quot;'
+            "'": '&#39;'
+            '/': '&#x2F;'
+            '`': '&#x60;'
+            '=': '&#x3D;'
+          String(string).replace /[&<>"'`=\/]/g, (s) -> entityMap[s]
 
         handleEvents: =>
             @on 'mousedown', '.panel-resize-handle', (e) => @resizeStarted(e)
@@ -44,7 +59,7 @@ module.exports =
         viewForItem: (item) ->
             "<li class='full-menu list-tree'>" +
                 "<span class='pastille list-item-#{item.type}'></span>" +
-                "<span class='list-item'>#{item.label}</span>" +
+                "<span class='list-item'>#{@escapeHtml(item.label)}</span>" +
             "</li>"
 
         confirmed: (item) ->
