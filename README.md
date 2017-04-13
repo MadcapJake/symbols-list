@@ -21,6 +21,7 @@ If you want to see more languages or added, open a ticket, or feel free to do a 
 * Github Markdown ( source.gfm )
 * C# ( source.cs )
 * Perl ( source.pl, source.pm )
+* L.B. Stanza ( source.stanza )
 
 ## Settings
 * `Start Up` Set panel visibility at startup
