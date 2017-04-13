@@ -92,3 +92,20 @@ module.exports =
                 todo: /#[ ]*todo\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
                 fixme: /#[ ]*fixme\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
                 hack: /#[ ]*hack\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
+        stanza:
+            regex:
+                commentaire: /^[^\S\n]*; ! (.+)/gmi
+                package: /^[ \t]*defpackage[ ]+([^\s;]+)/gmi
+                import: /^[ \t]*import[ ]+([^\s;]+)/gmi # Imported packages
+                constant: /^[ \t]*extern[ ]+(\w+)/gmi # C Externs
+                object: /^[ \t]*new[ ]+(\S+)/
+                function: /^[ \t]*(?:public[ ]+|protected[ ]+)(?:lostanza[ ]+)?defn[ ]+(\S+)/gmi # visible functions
+                filter: /^[ \t]*(?:lostanza[ ]+)?defn[ ]+(\S+)/gmi # basic functions
+                type: /^[ \t]*(?:public[ ]+|protected[ ]+|lostanza[ ]+)*deftype[ ]+(\S+)/gmi
+                struct: /^[ \t]*(?:public[ ]+|protected[ ]+|lostanza[ ]+)*defstruct[ ]+(\S+)/gmi
+                method: /^[ \t]*(?:public[ ]+|protected[ ]+|lostanza[ ]+)*defmethod[ ]+(\S+)/gmi
+                module: /^[ \t]*(?:public[ ]+|protected[ ]+|lostanza[ ]+)*defmulti[ ]+(\S+)/gmi
+                value: /^(?:public[ ]+|protected[ ]+)(?:lostanza[ ]+)?(?:val|var)[ ]+([^\s:]+)/gmi
+                todo: /;[ ]*todo\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
+                fixme: /;[ ]*fixme\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
+                hack: /;[ ]*hack\:[ ]*(.+?)[ ]*(?:[\r\n])/gmi
