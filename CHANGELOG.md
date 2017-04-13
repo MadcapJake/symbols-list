@@ -1,4 +1,6 @@
 ## dev
+* Escape symbol labels
+* Add Stanza regex
 
 ## 2.4 - Lots of improvements!
 * Improved regex strings for Ruby (Differ between class methods and instance methods).
